@@ -1,0 +1,39 @@
+.body
+	{
+	margin: 0!important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+	font-size: 20px;
+	}
+
+.message
+	{
+	color: #f1f1f1;
+	font-weight: bold!important;
+	font-family: "Anonymous Pro", monospace!important;
+	letter-spacing: 7px!important;
+	overflow: hidden;
+	border-right: 2px solid #cccccc;
+	white-space: nowrap;
+	animation: typewriter 2s steps(50) 1s 1 normal both,
+		blinkTextCursor 500ms infinite;
+	}
+
+@keyframes typewriter {
+	from {
+		width: 0;
+	}
+	to {
+		width: 750px;
+	}
+}
+@keyframes blinkTextCursor {
+	from {
+		border-right-color: hsl(0, 0%, 80%);
+	}
+	to {
+		border-right-color: transparent;
+	}
+}
