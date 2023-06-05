@@ -1,0 +1,86 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "device": "Celing Lights",
+      "deviceType": "Light",
+      "room": "Confernece Room"
+    },
+    {
+      "id": 2,
+      "device": "Celing Lights",
+      "deviceType": "Light",
+      "room": "Confernece Room"
+    },
+    {
+      "id": 3,
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "room": "Confernece Room"
+    },
+    {
+      "id": 4,
+      "device": "Entrance Light",
+      "deviceType": "Light",
+      "room": "Lobby Room"
+    },
+    {
+      "id": 5,
+      "device": "Celing Lights",
+      "deviceType": "Light",
+      "room": "Lobby Room"
+    },
+    {
+      "id": 6,
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "room": "Lobby Room"
+    },
+    {
+      "id": 7,
+      "device": "High Power Lights",
+      "deviceType": "Light",
+      "room": "Cabin"
+    },
+    {
+      "id": 8,
+      "device": "Low Power Lights",
+      "deviceType": "Light",
+      "room": "Cabin"
+    },
+    {
+      "id": 9,
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "room": "Cabin"
+    },
+    {
+      "id": 10,
+      "device": "High Power Lights",
+      "deviceType": "Light",
+      "room": "Office Space"
+    },
+    {
+      "id": 11,
+      "device": "Low Power Lights",
+      "deviceType": "Light",
+      "room": "Office Space"
+    },
+    {
+      "id": 12,
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "room": "Office Space"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

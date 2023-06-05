@@ -7,12 +7,16 @@ import Conference from './pages/conferenceRoom';
 import Lobby from './pages/lobbyRoom';
 import Cabin from './pages/personalCabin';
 import Office from './pages/officeRoom';
+import Profiles from './components/ToggleSwitch';
+import AddDevice from './components/addDevice';
+import FAB from './components/fab';
+import Titles from './components/Titles';
 
 function App() {
 	return (
-
+		<>
 			<Router>
-				<Title/>
+				<Titles/>
 				<div>
 					<Routes>
 						<Route exact path="/" element={<Room/>}/>
@@ -20,10 +24,15 @@ function App() {
 						<Route exact path="/lobby" element={<Lobby/>}/>
 						<Route exact path="/cabin" element={<Cabin/>}/>
 						<Route exact path="/office" element={<Office/>}/>
+						<Route exact path="/profiles" element={<Profiles/>}/>
+						<Route exact path="/addDevice" element={<AddDevice/>}/>
 					</Routes>
 				</div>
 			</Router>
-
+			<div className='fab'>
+				<FAB/>
+			</div>
+		</>
 		);
 }
 

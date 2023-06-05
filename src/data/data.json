@@ -1,0 +1,88 @@
+[	
+	{
+		"id":1,
+		"room":"Confernece Room",
+		"device":"Celing Lights",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":2,
+		"room":"Confernece Room",
+		"device":"Celing Lights",
+		"deviceType": "Light"
+	},
+	
+	{
+		"id":3,
+		"room":"Confernece Room",
+		"device":"Daikin AC",
+		"deviceType": "Air Con"
+	},
+
+
+	{
+		"id":4,
+		"room":"Lobby Room",
+		"device":"Entrance Light",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":5,
+		"room":"Lobby Room",
+		"device":"Celing Lights",
+		"deviceType": "Light"
+	},
+	
+	{
+		"id":6,
+		"room":"Lobby Room",
+		"device":"Daikin AC",
+		"deviceType": "Air Con"
+	},
+
+
+	{
+		"id":7,
+		"room":"Cabin",
+		"device":"High Power Lights",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":8,
+		"room":"Cabin",
+		"device":"Low Power Lights",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":9,
+		"room":"Cabin",
+		"device":"Daikin AC",
+		"deviceType": "Air Con"
+	},
+
+
+	{
+		"id":10,
+		"room":"Office Space",
+		"device":"High Power Lights",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":11,
+		"room":"Office Space",
+		"device":"Low Power Lights",
+		"deviceType": "Light"
+	},
+
+	{
+		"id":12,
+		"room":"Office Space",
+		"device":"Daikin AC",
+		"deviceType": "Air Con"
+	}
+]

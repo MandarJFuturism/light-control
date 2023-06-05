@@ -1,41 +1,16 @@
 import * as React from 'react';
+import { useState, useStyles } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from 'react-router-dom';
 import { Divider, ThemeProvider, createTheme, Tooltip, } from '@mui/material';
 import { HomeSharp } from '@mui/icons-material';
-import Avatar from '@mui/material/Avatar';
-import styled from 'styled-components';
-
-const settings = ['Profile','Logout'];
-const NavUnlisted = styled.ul`
-
-
-`;
 
 function Title() {
-	const [, setAnchorElNav] = React.useState(null);
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-
-	const handleOpenUserMenu = (event) => {
-		setAnchorElUser(event.currentTarget);
-	};
-
-	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
-	};
-
-	const handleCloseUserMenu = () => {
-		setAnchorElUser(null);
-	};
 
 const theme = createTheme({
 	components: {
@@ -43,10 +18,27 @@ const theme = createTheme({
 			styleOverrides: {
 				colorPrimary: {
 					backgroundColor: "#424242",
-					color:"#f1f1f1"
+					color:"#ff6052",
+					fontFamily:'inherit'
 					}
 				}
 			},
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					color:"#FAF9F6",
+					borderRadius:"0px",
+					"&:hover": {
+						backgroundColor:"#1565C0",
+						},
+					"&:active": {
+						color:"#424242",
+						backgroundColor:'ffa69e'
+						}
+					}
+				}
+			},
+
 		}
 	});
 
@@ -55,22 +47,22 @@ const theme = createTheme({
 		<AppBar position="static" color='primary' enableColorOnDark>
 			<Container maxWidth="x2">
 				<Toolbar disableGutters>
+
 					<HomeSharp sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 					<Typography
-						variant="h6"
 						noWrap
 						component="a"
-						color='#f1f1f1'
+						color='#c2c2c2'
 						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'none', md: 'flex' },
-							fontWeight: 1000,
-							letterSpacing: '.3rem',
+							fontWeight: 900,
+							fontSize:30,
+							letterSpacing: '.1rem',
 							textDecoration: 'none',
-						}}
-					>
-						Dashboard
+						}}>
+						*Title*
 					</Typography>
 
 {/* Appbar sub items */}
@@ -78,8 +70,8 @@ const theme = createTheme({
 					<Divider orientation="vertical" variant="middle" flexItem />
 						<NavLink style={{textDecoration: 'none'}} to="/conference" className="link">
 							<Button
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: '#f1f1f1', display: 'block', fontWeight: 700 }}
+
+								sx={{ my: 2, color: '#c2c2c2', display: 'block', fontWeight: 700 }}
 							>
 								<span>Conference Room</span>
 							</Button>
@@ -88,8 +80,7 @@ const theme = createTheme({
 
 						<NavLink style={{textDecoration: 'none'}} to="/lobby" className="link">
 							<Button
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: '#f1f1f1', display: 'block', fontWeight: 700 }}
+								sx={{ my: 2, color: '#c2c2c2', display: 'block', fontWeight: 700 }}
 							>
 								<span>Lobby</span>
 							</Button>
@@ -99,8 +90,7 @@ const theme = createTheme({
 
 						<NavLink style={{textDecoration: 'none'}} to="/cabin" className="link">
 							<Button
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: '#f1f1f1', display: 'block', fontWeight: 700 }}
+								sx={{ my: 2, color: '#c2c2c2', display: 'block', fontWeight: 700 }}
 							>
 								<span>Cabin Room</span>
 							</Button>
@@ -110,44 +100,15 @@ const theme = createTheme({
 
 						<NavLink style={{textDecoration: 'none'}} to="/office" className="link">
 							<Button
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: '#f1f1f1', display: 'block', fontWeight: 700 }}
+								sx={{ my: 2, color: '#c2c2c2', display: 'block', fontWeight: 700 }}
 							>
 								<span>Office Room</span>
 							</Button>
 						</NavLink>
 						<Divider orientation="vertical" variant="middle" flexItem />
-					</Box>
 
-{/* Profile  */}
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar sx={{backgroundColor:'#424242'}}/>
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: '45px',}}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
+						<Divider orientation="vertical" variant="middle" flexItem />
+
 					</Box>
 
 				</Toolbar>
