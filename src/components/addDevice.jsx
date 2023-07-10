@@ -4,67 +4,56 @@ import { useState, useEffect } from 'react';
 import '../css/form.scss'
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-
-// import { Select } from '@mui/material';
-// import TextField from '@mui/material';
+import { useSnackbar } from 'react-simple-snackbar'
 
 export default function AddDevice() {
 
 	const [data, setdata] = useState([])
 	const [id, setId] = useState("")
+	const [deviceId, setDeviceId] = useState("")
 	const [device, setDevice] = useState("")
-	const [deviceType, setdeviceType] = useState("")
+	const [deviceType, setDeviceType] = useState("")
 	const [room, setRoom] = useState("")
 
 	const [reqId, setreqId] = useState("")
+	const [reqDeviceId, setreqDeviceId] = useState("")
 	const [reqDevice, setreqDevice] = useState("")
 	const [reqDeviceType, setreqDeviceType] = useState("")
 	const [reqRoom, setreqRoom] = useState("")
+	const [btnText, setbtnText] = useState("Submit")
 
 	const [open, setOpen] = React.useState(false);
+	
+	const snackbarStyle = {
+		position: 'bottom-right',
+		style: {
+			backgroundColor: '#252525',
+			border: '1px solid #ffb833',
+			color: '#ffb833',
+			fontFamily: 'inherit',
+			fontSize: '18px',
+			textAlign: 'center',
+			},
+		closeStyle: {
+			color: '#ffb833',
+			fontSize: '16px',
+			},
+		}
+
+	const [openSnackbar, closeSnackbar] = useSnackbar(snackbarStyle)
 
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return;
 			}
 		setOpen(false);
+		// window.location.reload(false);
 		};
 
 	const handleClick = () => {
-    setOpen(true);
-		handleClose();
-  };
-
-	const action = (
-		<React.Fragment>
-			<Button className='' size="small" onClick={handleClose}>
-				UNDO
-			</Button>
-			<IconButton
-				size="small"
-				aria-label="close"
-				color="inherit"
-				onClick={handleClose}
-			>
-				<CloseIcon fontSize="small" />
-			</IconButton>
-		</React.Fragment>
-	);
-
-	function alertPopup() {
-		return(
-			<Snackbar
-				open={open}
-				autoHideDuration={2000}
-				message="Device Added successfully"
-			/>
-			)
-		}
-
-	const [btnText, setbtnText] = useState("Submit")
+		setOpen(true);
+		handleClose(false);
+  	};
 
 	useEffect(() => {
 		getData();
@@ -86,136 +75,104 @@ export default function AddDevice() {
 					method: 'POST',
 					body: JSON.stringify({
 						id: id,
+						deviceId: deviceId,
 						device: device,
 						deviceType: deviceType,
+						status : false,
 						room: room,
 					}),
 					headers: {
 						'Content-type': 'application/json',
 					},
 				}).then((response) => response.json()).then((result) => {
-					alert("Record inserted")
-					getData()
-					resetform();
-					resetErrorMessage();
-				})
-			}
-
-			else {
-				fetch('http://localhost:3005/posts/' + id, {
-					method: 'PUT',
-					body: JSON.stringify({
-						device: device,
-						deviceType: deviceType,
-						room: room,
-					}),
-					headers: {
-						'Content-type': 'application/json',
-					},
-				}).then((response) => response.json()).then((result) => {
-					alert("Record updated")
+					// alert("Record inserted")
+					openSnackbar('Device added')
 					getData()
 					resetform();
 					resetErrorMessage();
 				})
 			}
 		}
-		console.log(device,deviceType,room)
+		handleClose();
+		console.log(deviceId,device,deviceType,room)
 	}
 
 	const Validate = () => {
 		if (id.trim() === "") setreqId("required")
-		 if (device.trim() === "") setreqDevice("required")
-		 if (deviceType.trim() === "") setreqDeviceType("required")
-		 if (room.trim() === "") setreqRoom("required")
+		if (deviceId.trim() === "") setreqDeviceId("required")
+		if (device.trim() === "") setreqDevice("required")
+		if (deviceType.trim() === "") setreqDeviceType("required")
+		if (room.trim() === "") setreqRoom("required")
 		else return true
 		}
 
 	const resetErrorMessage = () => {
-		setreqId(""); 
-		setreqDevice(""); 
-		setreqDeviceType(""); 
+		setreqId("");
+		setreqDeviceId("");
+		setreqDevice("");
+		setreqDeviceType("");
 		setreqRoom("");
 		}
 
 	const resetform = () => {
-		setId(""); 
-		setDevice(""); 
-		setdeviceType(""); 
-		setRoom(""); 
+		setId("");
+		setDeviceId("");
+		setDevice("");
+		setDeviceType("");
+		setRoom("");
 		setbtnText("Submit");
 		}
 
-	const deleterecord = (id) => {
-		fetch("http://localhost:3005/posts/" + id, { method: 'DELETE' }).then((response) => response.json())
-			.then((result) => {
-				alert("Record deleted")
-				getData()
-			})
-		}
-
-		const editrecord = (item) => {
-			setId(item.id)
-			setDevice(item.name)
-			setdeviceType(item.country)
-			setRoom(item.comment)
-			setbtnText("Update")
-			}
-
 	return (
 		<div className='form-container'>
-			<Form  onSubmit={submit} className='form'>
+			<Form onSubmit={submit} className='form'>
 				<Form.Group className="">
-					<Form.Label className='form--label'>Device ID</Form.Label>
+					{/* <Form.Label className='form--label'>Device ID</Form.Label> */}
 					<Form.Control 
-						value={id}
-						name="id"
-						onChange={(e) => setId(e.target.value)}
-						className='form--input' placeholder='ID'/>
-					<br />
-						{reqId === "required" && <span className="error">Please enter id</span>}
+						value={deviceId}
+						name="Device ID"
+						onChange={(e) => setDeviceId(e.target.value)}
+						className='form--input' placeholder='Device ID'/>
+						{reqDeviceId === "required" && <span className="error">Please enter id</span>}
 				</Form.Group>
 
 				<Form.Group>
-					<Form.Label className='form--label'>Device Name</Form.Label>
+					{/* <Form.Label className='form--label'>Device Name</Form.Label> */}
 					<Form.Control 
 						value={device}
 						name="device"
 						onChange={(e) => setDevice(e.target.value)}
 						className='form--input' placeholder='Device Name'/>
-					<br />
 						{reqDevice === "required" && <span className="error">Please enter device name</span>}
 				</Form.Group>
 
 				<Form.Group >
-					<Form.Label className='form--label'>Device Type</Form.Label>
+					{/* <Form.Label className='form--label'>Device Type</Form.Label> */}
 					<Form.Select 
 						value={deviceType}
 						name="deviceType"
-						onChange={(e) => setdeviceType(e.target.value)}
+						onChange={(e) => setDeviceType(e.target.value)}
 						placeholder="Select Type" className='form--select'>
-						<option>Select Device type</option>
+						<option value="">Select Device type</option>
 						<option value="Lights">Lights</option>
 						<option value="Air Con">Air Con</option>
 						<option value="Fan">Fan</option>
-						<br />
 							{reqDeviceType === "required" && <span className="error">Please select Device Type</span>}
 					</Form.Select>
 				</Form.Group>
 
 				<Form.Group >
-					<Form.Label className='form--label'>Room Name</Form.Label>
+					{/* <Form.Label className='form--label'>Room Name</Form.Label> */}
 					<Form.Select 
 						value={room}
 						name="room"
 						onChange={(e) => setRoom(e.target.value)}
 						placeholder="Select Type" className='form--select'>
-						<option>Select Room</option>
+						<option value="">Select Room</option>
 						<option value="Conference Room">Conference Room</option>
 						<option value="Lobby Room">Lobby Room</option>
 						<option value="Cabins">Cabins</option>
 						<option value="Office Space">Office Space</option>
-						<br />
 							{reqRoom === "required" && <span className="error">Please select Room</span>}
 					</Form.Select>
 				</Form.Group>

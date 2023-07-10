@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Fab } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import Popup from 'reactjs-popup';
-import { AiOutlineClose } from 'react-icons/ai';
+import { RxCrossCircled } from 'react-icons/rx';
 import AddDevice from './addDevice';
+import {AiOutlineFileAdd} from 'react-icons/ai'
 
 export default function FAB() {
 	const [open, setOpen] = useState(false);  
@@ -12,17 +12,17 @@ export default function FAB() {
 
 	return(
 		<>
-			<Fab onClick={() => setOpen(o => !o)} sx={{ p: 0 }} color="primary" aria-label="add">
-				<AddIcon />
+			<Fab onClick={() => setOpen(o => !o)} style={{backgroundColor:'#ffb833'}} aria-label="add">
+				<AiOutlineFileAdd style={{fontSize:'30px'}}/>
 			</Fab>
 
 			<Popup
 				open={open} 
 				closeOnDocumentClick onClose={closeModal}
-				className='overlay'
+				className='popup-overlay'
 			>
 			<div>
-				<AiOutlineClose type='button' onClick={closeModal} />
+				<RxCrossCircled className='btn-close' type='button' onClick={closeModal} />
 				<AddDevice/>
 			</div>
 			</Popup>

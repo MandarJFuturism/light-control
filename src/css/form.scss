@@ -1,122 +1,141 @@
 $color_1: #424242;
-$color_2: #FAF9F6;
-$background-color_1: #555555;
-$background-color_2: #ffa69e;
-// @import "~bootstrap/scss/bootstrap";
+$color_2: #555555;
+$color_3: #252525;
+$color_4: #ffc833;
+$color_5: #ffb833;
+$color_6: #eeeeee;
+
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+:root {
+	--title-color: #FAF9F6;
+	--bgcolor : #293241;
+	--selectColor: #d2d3db;
+	}
+
+[data-theme="light"] {
+	--title-color: #293241;
+	--bgcolor : #d2d3db;
+	--selectColor: #293241;
+	}
 
 .form-container {
-	// margin: auto;
-	// padding: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-  align-items: center;
-  }
+	align-items: center;
+	height: fit-content;
+	margin: 10px 10px 0px 0px;
+	}
 
 .form {
-	background-color: $background-color_1;
-	padding: 50px;
+	background-color: var(--bgcolor);
+	padding: 25px;
+	width: 300px;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items:normal;
-	box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
-}
+	box-shadow: 5px 5px 15px -1px #000000bf;
+	}
+
+.form--title{
+	color: $color_6;
+	font-size: 25px;
+	margin-bottom: 20px;
+	}
+
 .form--label{
-	color: $color_2;
-}
+	color: var(--title-color);
+	}
 
 .form--input {
-	width: 100%;
-	margin-bottom: 10px;
-	height: 40px;
-	border-radius: 5px;
-	border: 1px solid $color_2;
-	background: $color_2;
-	padding-left: 15px;
-	margin-top: 5px;
-	font-size: 15px;
-}
-
-.form--select {
-	width: 105%;
+	width: 95%;
 	margin-bottom: 20px;
 	height: 40px;
-	border-radius: 5px;
-	border: 1px solid $color_2;
-	background: $color_2;
-	padding-left: 5px;
+	border: 0px;
+	border-radius: 40px;
 	margin-top: 5px;
 	font-size: 15px;
-}
+	font-weight: 600;
+	padding: 0px 0px 0px 15px;
+	border: 1px solid var(--selectColor);
+	background: $color_6;
+	}
+
+.form--select {
+	width: 100%;
+	margin-bottom: 20px;
+	height: 40px;
+	border-radius: 20px;
+	margin-top: 5px;
+	font-size: 15px;
+	padding: 0px 0px 0px 15px;
+	border: 1px solid var(--selectColor);
+	background: $color_6;
+	}
 
 .form--submit {
 	width: 50%;
 	padding: 10px;
 	border-radius: 5px;
 	color: $color_1;
-	background-color: $color_2;
+	background-color: $color_4;
 	border: none;
 	cursor: pointer;
-}
+	}
 
 .button{
-  position: relative;
-  background-color: $background-color_2;
-  border-radius: 4em;
-  font-size: 16px;
-  color: $background-color_1;
-  font-weight: 700;
-  padding: 0.8em 1.8em;
-  cursor:pointer;
-  user-select:none;
-  text-align: center;
+	position: relative;
+	background-color: $color_4;
+	border-radius: 4em;
+	font-size: 16px;
+	color: $color_3;
+	font-weight: 700;
+	padding: 0.8em 1.8em;
+	cursor:pointer;
+	user-select:none;
+	text-align: center;
 	width: fit-content;
 	margin: auto;
-  text-decoration: none;
-  cursor: pointer;
-  transition-duration: 0.4s;
-  border: none;
-}
-
+	text-decoration: none;
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border: none;
+	}
 .button:hover {
-  transition-duration: 0.1s;
-  background-color: $background-color_2;
-}
-
+	transition-duration: 0.1s;
+	background-color: $color_5;
+	}
 .button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 4em;
-  left: 0;
-  top:0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: all 0.5s;
-  box-shadow: 0 0 10px 40px $color_2;
-}
-
+	content: "";
+	display: block;
+	position: absolute;
+	border-radius: 4em;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: all 0.5s;
+	box-shadow: 0 0 10px 40px $color_4;
+	}
 .button:active:after {
-  box-shadow: 0 0 0 0 $color_2;
-  position: absolute;
-  border-radius: 4em;
-  left: 0;
-  top:0;
-  opacity: 1;
-  transition: 0s;
-}
-
+	box-shadow: 0 0 0 0 $color_5;
+	position: absolute;
+	border-radius: 4em;
+	left: 0;
+	top:0;
+	opacity: 1;
+	transition: 0s;
+	}
 .button:active {
-  top: 1px;
-}
+	top: 1px;
+	}
 
 .error{
-	color: $background-color_2;
+	color: $color_4;
 	display: inline-block;
 	font-size: 15px;
 	line-height: 15px;
 	margin: 5px 0 0;
-}
+	}

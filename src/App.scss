@@ -1,27 +1,75 @@
-$color_1:#454545;
-$color_2: #5d4954;
+$color_1: #ffc822;
+$color_2: #ffb833;
+$darkbg_1:#0E0F14;
+$darkbg_2:#1F212B;
+
+:root {
+	--font-color: #eee;
+  --background-color: #1F212B;
+  --link-color: lightblue;
+}
+
+[data-theme="light"] {
+	--font-color: #333;
+  --background-color: #A9A9A9;
+  --link-color: cornflowerblue;
+}
 
 html
 	{
-	background-color: $color_1;
-	// background-image: linear-gradient(315deg, $color_1 0%, $color_2 74%);
-	height: 100vh;
+	background-color: var(--background-color);
+	color: var(--font-color);
 	font-size: larger;
 	font-weight: bold;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	}
 
 .fab
 	{
-	position: absolute;
+	position: fixed;
 	bottom: 50px;
 	right: 50px;
 	}
 
-.overlay-content
+.btn-close{
+	position: absolute;
+	margin: -10px;
+	color: $color_2;
+	right: 0;
+	font-size: 25px;
+	cursor: pointer;
+	}
+	.btn-close:hover {
+		transition-duration: 0.2s;
+		color: $color_1;
+		font-size: 27px;
+		}
+
+
+.popup-overlay
 	{
 	width: 100%;
 	height: 100%;
-	background-color: #00000080;
+	background-color: #00000090;
 	z-index: 2;
 	}
+
+@keyframes anvil {
+	0% {
+		transform: scale(1) translateY(0px);
+		opacity: 0;
+		box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+		}
+	1% {
+		transform: scale(0.96) translateY(10px);
+		opacity: 0;
+		box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+		}
+	100% {
+		transform: scale(1) translateY(0px);
+		opacity: 1;
+		box-shadow: 0 0 500px #f1f1f100;
+		}
+	}
+
+.popup-content {  -webkit-animation: anvil 0.2s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;}

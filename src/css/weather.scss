@@ -1,0 +1,87 @@
+:root {
+	--title-color: #FAF9F6;
+  --wrapcolor: #0E0F14;
+	--subcolor : #293241;
+	}
+
+[data-theme="light"] {
+	--title-color: #293241;
+  --wrapcolor: #9394a5;
+	--subcolor : #d2d3db;
+	}
+
+.weatherContainer{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 180px;
+	width: 590px;
+	background-color: var(--subcolor);
+	border-radius: 10px;
+	box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	margin: 10px 10px 0px 0px;
+	padding: 10px 10px 0px 10px;
+	}
+
+.card {
+	width: 340px;
+	height: 220px;
+	background-color: var(--subcolor);
+	border-radius: 7px;
+	box-shadow: 0.3px 0.3px 0.3px 1px rgba(0, 0, 0, 0.2);
+	}
+
+.weatherIcon{
+	width: 35%;
+	height: 100%;
+	position: relative;
+	img{
+		width: 200px;
+		height: fit-content;
+		margin: auto;
+		}
+	}
+
+.weatherData {
+	font-size: 55px;
+	margin: auto 0px auto 0px;
+	display: flex;
+	flex-direction: column;
+	}
+
+.weatherMessage{
+	margin: auto 0px auto 50px;
+	padding: 2px;
+	display: flex;
+	flex-direction: column;
+	#city{
+		font-size: 35px;
+		}
+	#message{
+		margin-top: 10px;
+		color: var(--footer);
+		font-size: 18px;
+		}
+	}
+
+.Temp{
+	position: absolute;
+	font-size: 25px;
+	font-weight: 600;
+	left: 20px;
+	bottom: 20px;
+	}
+
+.weatherButton{
+	width: fit-content;
+	height: fit-content;
+	font-size: 30px;
+	padding: 5px;
+	background: transparent;
+	border: 0px solid;
+	color: #6CA0DC;
+	position: absolute;
+	top: 0;
+	right: 0;
+	}

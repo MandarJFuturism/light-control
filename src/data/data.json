@@ -1,88 +1,202 @@
-[	
-	{
-		"id":1,
-		"room":"Confernece Room",
-		"device":"Celing Lights",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":2,
-		"room":"Confernece Room",
-		"device":"Celing Lights",
-		"deviceType": "Light"
-	},
-	
-	{
-		"id":3,
-		"room":"Confernece Room",
-		"device":"Daikin AC",
-		"deviceType": "Air Con"
-	},
-
-
-	{
-		"id":4,
-		"room":"Lobby Room",
-		"device":"Entrance Light",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":5,
-		"room":"Lobby Room",
-		"device":"Celing Lights",
-		"deviceType": "Light"
-	},
-	
-	{
-		"id":6,
-		"room":"Lobby Room",
-		"device":"Daikin AC",
-		"deviceType": "Air Con"
-	},
-
-
-	{
-		"id":7,
-		"room":"Cabin",
-		"device":"High Power Lights",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":8,
-		"room":"Cabin",
-		"device":"Low Power Lights",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":9,
-		"room":"Cabin",
-		"device":"Daikin AC",
-		"deviceType": "Air Con"
-	},
-
-
-	{
-		"id":10,
-		"room":"Office Space",
-		"device":"High Power Lights",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":11,
-		"room":"Office Space",
-		"device":"Low Power Lights",
-		"deviceType": "Light"
-	},
-
-	{
-		"id":12,
-		"room":"Office Space",
-		"device":"Daikin AC",
-		"deviceType": "Air Con"
-	}
-]
+{
+  "posts": [
+    {
+      "id": 2,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Entrance Lights",
+      "deviceType": "Lights",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 4,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 5,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "High Power Lights",
+      "deviceType": "Lights",
+      "status": true,
+      "room": "Cabins"
+    },
+    {
+      "id": 6,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Low Power Lights",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Cabins"
+    },
+    {
+      "id": 7,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Cabins"
+    },
+    {
+      "id": 8,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Daikin AC",
+      "deviceType": "Air Con",
+      "status": true,
+      "room": "Office Space"
+    },
+    {
+      "id": 9,
+      "deviceId": "3h3f-f3nin3i",
+      "device": "Lights 4",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Office Space"
+    },
+    {
+      "id": 11,
+      "deviceId": "vrv34",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Conference Room"
+    },
+    {
+      "id": 12,
+      "deviceId": "5623bbsd",
+      "device": "AC 2",
+      "deviceType": "Air Con",
+      "status": false,
+      "room": "Cabins"
+    },
+    {
+      "id": 13,
+      "deviceId": "vf33f",
+      "device": "AC 4",
+      "deviceType": "Air Con",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 14,
+      "deviceId": "hrth45",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 16,
+      "deviceId": "snfnnf3ljkn",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": true,
+      "room": "Office Space"
+    },
+    {
+      "id": 21,
+      "deviceId": "n4h3tye",
+      "device": "Fan",
+      "deviceType": "Fan",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 22,
+      "deviceId": "6786e7idc",
+      "device": "Fan 1",
+      "deviceType": "Fan",
+      "status": false,
+      "room": "Conference Room"
+    },
+    {
+      "id": 24,
+      "deviceId": "4asd2323",
+      "device": "Fan",
+      "deviceType": "Fan",
+      "status": false,
+      "room": "Cabins"
+    },
+    {
+      "id": 25,
+      "deviceId": "r32wqdw2qe",
+      "device": "Fan",
+      "deviceType": "Fan",
+      "status": false,
+      "room": "Office Space"
+    },
+    {
+      "id": 26,
+      "deviceId": "n4h3tye",
+      "device": "Lights",
+      "deviceType": "Lights",
+      "status": true,
+      "room": "Lobby Room"
+    },
+    {
+      "id": 28,
+      "deviceId": "4bgre",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Office Space"
+    },
+    {
+      "id": 29,
+      "deviceId": "n4h3tye",
+      "device": "AC",
+      "deviceType": "Air Con",
+      "status": false,
+      "room": "Office Space"
+    },
+    {
+      "id": 30,
+      "deviceId": "vrv34",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Conference Room"
+    },
+    {
+      "id": 31,
+      "deviceId": "vrv34",
+      "device": "sd",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Cabins"
+    },
+    {
+      "id": 32,
+      "deviceId": "vrv34",
+      "device": "Lights 2",
+      "deviceType": "Lights",
+      "status": false,
+      "room": "Lobby Room"
+    }
+  ],
+  "Rooms": [
+    {
+      "id": 1,
+      "room": "Lobby",
+      "logo": "./images/sidebar/lobby.png"
+    },
+    {
+      "id": 2,
+      "room": "Office",
+      "logo": "./images/sidebar/office.png"
+    },
+    {
+      "id": 3,
+      "room": "Conference",
+      "logo": "./images/sidebar/conference.png"
+    },
+    {
+      "id": 4,
+      "room": "Cabins",
+      "logo": "./images/sidebar/cabins.png"
+    }
+  ]
+}
