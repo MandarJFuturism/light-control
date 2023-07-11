@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import React, {useState, useEffect} from 'react'
 import '../css/homePage.scss'
 import { NavLink } from 'react-router-dom';

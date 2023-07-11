@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react'
 import '../css/homePage.scss'
 import Weather from '../components/Weather';
@@ -96,7 +97,7 @@ const data = [
 ];
 
 export default function Home() {
-	const [selectRoom, setSelectedRoom] = useState("Lobby Room");
+	const [selectRoom, setSelectedRoom] = useState("lobby");
 	return (
 		<div className='wrapper'>
 {/* Left side */}
