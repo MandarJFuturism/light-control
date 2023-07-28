@@ -9,10 +9,14 @@ import { Switch } from "antd";
 export default function Room() {
 
 	const [data, setData] = useState([])
-	const [id, setId] = useState("")
+	const [status, setStatus] = useState(false)
+	const [s1, sets1] = useState(0)
+	const [s2, sets2] = useState(0)
+	const [s3, sets3] = useState(0)
+	const [s4, sets4] = useState(0)
 
 	const getData = () => {
-		fetch("http://localhost:3005/posts").then((response) => response.json())
+		fetch("http://192.168.7.48:5004/getAllDeviceData").then((response) => response.json())
 			.then((result) => {
 				setData(result)
 			})
@@ -28,19 +32,91 @@ export default function Room() {
 				<span className='title'>Lights</span>
 
 				<Divider/>
-				{ data ? data.filter(item => item.room === 'Office Space' && item.deviceType === 'Lights').map((item, index) => {
-					const onToggle = (checked) => {
+				{ data ? data.filter(item => item.name === 'FT_Testing_Light' || item.name === 'FT_S_C1').map((item, index) => {
+					const valuseS1 = () => {
+						if(item.s1 != null) {
+							if(s1 === 0)
+								sets1(1)
+							else if(s1 === 1)
+								sets1(0)
+							}
+						else if(item.s4 === null)
+							sets1(null)
+						}
 
-						if (item.status===false) {
-							fetch('http://localhost:3005/posts/' + item.id, {
+					const valuseS2 = () => {
+						if(item.s2 != null) {
+							if(s2 === 0)
+								sets2(1)
+							else if(s2 === 1)
+								sets2(0)
+							}
+						else if(item.s4 === null)
+							sets2(null)
+						}
+
+					const valuseS3 = () => {
+						if(item.s3 != null) {
+							if(s3 === 0)
+								sets3(1)
+							else if(s3 === 1)
+								sets3(0)
+							}
+						else if(item.s4 === null)
+							sets3(null)
+						}
+
+					const valuseS4 = () => {
+						if(item.s4 != null) {
+							if(s4 === 0)
+								sets4(1)
+							else if(s4 === 1)
+								sets4(0)
+							}
+						else if(item.s4 === null)
+							sets4(null)
+						}
+
+					const setSwitch = () => {
+						fetch('http://192.168.7.48:5004/UpdateDeviceSwitch/' + item.id, {
+							method: 'PUT',
+							body: JSON.stringify({
+								data: item.data,
+								id: item.id,
+								name: item.name,
+								s1: s1,
+								s2: s2,
+								s3: s3,
+								s4: s4,
+								time: item.time,
+								topic: item.topic
+								}),
+							headers: {
+								'Content-type': 'application/json',
+								},
+							}).then((response) => response.json()).then((result) => {
+							console.log("Light ON")
+							getData()
+							}).catch((err) => {
+								console.log(err.message)
+							});
+						}
+
+					const onToggle = () => {
+						if (status === false) {
+							setStatus(true)
+							fetch('http://192.168.7.48:5004/UpdateDeviceSwitch/' + item.id, {
 								method: 'PUT',
 								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: true,
-									room: item.room
+									data: item.data,
+									id: item.id,
+									name: item.name,
+									s1: 1,
+									s2: 1,
+									s3: 1,
+									s4: 1,
+									time: item.time,
+									topic: "esp8266/led"
 									}),
 								headers: {
 									'Content-type': 'application/json',
@@ -52,17 +128,20 @@ export default function Room() {
 									console.log(err.message)
 								});
 							}
-							
-						else	{
-							fetch('http://localhost:3005/posts/' + item.id, {
+						else if (status === true) {
+							setStatus(false)
+							fetch('http://192.168.7.48:5004/UpdateDeviceSwitch/' + item.id, {
 								method: 'PUT',
 								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: false,
-									room: item.room
+									data: item.data,
+									id: item.id,
+									name: item.name,
+									s1: 0,
+									s2: 0,
+									s3: 0,
+									s4: 0,
+									time: item.time,
+									topic: "esp8266/led"
 									}),
 								headers: {
 									'Content-type': 'application/json',
@@ -75,188 +154,41 @@ export default function Room() {
 								});
 							}
 						}
+
 				return(
 					<div className='lightContainer' key={index}>
-					<Box className='switchBox' bgcolor={item.status ? '#ffb833' : '#424242'}>
-						<TbBulbFilled className="icon"/>
-
-						<span className="subtitle">{item.device}</span>
-
-						<Switch
-							style={{
-								margin:'inherit',
-								width: '60px',
-								backgroundColor: '#252525',
-								float:'right'
-							}}
-							className="toggleSwitch"
-							checkedChildren='ON'
-							unCheckedChildren='OFF'
-							checked={item.status}
-							onChange={onToggle}
-							/>
-						</Box>
-						<Divider/>
-					</div>
-				)}
+						<Box className='switchBox' bgcolor={setStatus ? '#ffb833' : '#424242'}>
+							<Box className="switchSubBox">
+								<TbBulbFilled className="icon"/>
+								<span className="subtitle">{item.name}</span>
+								<Switch
+									style={{
+										margin:'inherit',
+										width: '60px',
+										height: '24px',
+										backgroundColor: '#252525',
+										float:'right'
+									}}
+									className="toggleSwitch"
+									checkedChildren='ON'
+									unCheckedChildren='OFF'
+									checked={status}
+									onChange={onToggle}
+									/>
+								</Box>
+								<div className="switchSubBox">
+									<button className="subButton" onClick={valuseS1}>{item.s1}</button>
+									<button className="subButton" onClick={valuseS2}>{item.s2}</button>
+									<button className="subButton" onClick={valuseS3}>{item.s3}</button>
+									<button className="subButton" onClick={valuseS4}>{item.s4}</button>
+									<button className="subButton" onClick={setSwitch}>Set lights</button>
+								</div>
+							</Box>
+						</div>
+					)
+				}
 			):null}
 			</div>
-			<div className='container'>
-				<span className='title'>Air Con</span>
-
-				<Divider/>
-				{ data ? data.filter(item => item.room === 'Office Space' && item.deviceType === 'Air Con').map((item, index) => {
-					const onToggle = (checked) => {
-
-						if (item.status===false) {
-							fetch('http://localhost:3005/posts/' + item.id, {
-								method: 'PUT',
-								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: true,
-									room: item.room
-									}),
-								headers: {
-									'Content-type': 'application/json',
-									},
-								}).then((response) => response.json()).then((result) => {
-								console.log("Light ON")
-								getData()
-								}).catch((err) => {
-									console.log(err.message)
-								});
-							}
-							
-						else	{
-							fetch('http://localhost:3005/posts/' + item.id, {
-								method: 'PUT',
-								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: false,
-									room: item.room
-									}),
-								headers: {
-									'Content-type': 'application/json',
-									},
-								}).then((response) => response.json()).then((result) => {
-								console.log("Light OFF")
-								getData()
-								}).catch((err) => {
-									console.log(err.message)
-								});
-							}
-						}
-				return(
-					<div className='lightContainer' key={index}>
-					<Box className='switchBox' bgcolor={item.status ? '#ffb833' : '#424242'}>
-						<TbAirConditioning className="icon"/>
-
-						<span className="subtitle">{item.device}</span>
-
-						<Switch
-							style={{
-								margin:'inherit',
-								width: '60px',
-								backgroundColor: '#252525',
-								float:'right'
-							}}
-							className="toggleSwitch"
-							checkedChildren='ON'
-							unCheckedChildren='OFF'
-							checked={item.status}
-							onChange={onToggle}
-							/>
-					</Box>
-				<Divider/>
-				</div>
-				)}
-			):null}
-			</div>
-
-			<div className='container'>
-				<span className='title'>Fans</span>
-
-				<Divider/>
-				{ data ? data.filter(item => item.room === 'Office Space' && item.deviceType === 'Fan').map((item, index) =>	{
-					const onToggle = (checked) => {
-
-						if (item.status===false) {
-							fetch('http://localhost:3005/posts/' + item.id, {
-								method: 'PUT',
-								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: true,
-									room: item.room
-									}),
-								headers: {
-									'Content-type': 'application/json',
-									},
-								}).then((response) => response.json()).then((result) => {
-								console.log("Light ON")
-								getData()
-								}).catch((err) => {
-									console.log(err.message)
-								});
-							}
-							
-						else	{
-							fetch('http://localhost:3005/posts/' + item.id, {
-								method: 'PUT',
-								body: JSON.stringify({
-									id: id,
-									deviceId: item.deviceId,
-									device: item.device,
-									deviceType: item.deviceType,
-									status: false,
-									room: item.room
-									}),
-								headers: {
-									'Content-type': 'application/json',
-									},
-								}).then((response) => response.json()).then((result) => {
-								console.log("Light OFF")
-								getData()
-								}).catch((err) => {
-									console.log(err.message)
-								});
-							}
-						}
-				return(
-					<div className='lightContainer' key={index}>
-					<Box className='switchBox' bgcolor={item.status ? '#ffb833' : '#424242'}>
-						<FaFan className={item.status ? "icon animate" : "icon"}/>
-
-						<span className="subtitle">{item.device}</span>
-
-						<Switch
-							style={{
-								margin:'inherit',
-								width: '60px',
-								backgroundColor: '#252525',
-								float:'right'
-							}}
-							className="toggleSwitch"
-							checkedChildren='ON'
-							unCheckedChildren='OFF'
-							checked={item.status}
-							onChange={onToggle}
-							/>
-					</Box>
-				<Divider/>
-				</div>
-				)}
-			):null}
-			</div>
-
 		</>
-	);
-}
+		);
+	}

@@ -59,15 +59,28 @@ $color_6: #252525;
 	{
 	width: fit-content;
 	height: fit-content;
-	max-width: 400px;
-	max-height: 400px;
+	max-width: 550px;
+	max-height: 500px;
 	color: $color_6;
+	padding: 20px;
 	margin: 10px;
-	padding: 20px 15px;
-	gap: 20px;
 	font-size: 25px;
 	border: 1px solid $color_4;
 	border-radius: 35px;
+	}
+
+.switchSubBox {
+	display: block;
+	height: 50px;
+	color: $color_6;
+	padding: 20px 20px;
+	font-size: 25px;
+	padding: 5px;
+	// border-bottom: 1px solid $color_4;
+	border-radius: 35px;
+	button{
+		padding: 5px 5px;
+		}
 	}
 
 .switchStyle
@@ -119,4 +132,9 @@ $color_6: #252525;
 	100% {
 		background-position: 0% 50%;
 		}
+	}
+
+.subButton{
+	background-color: $color_4;
+	color: $color_1;
 	}

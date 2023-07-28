@@ -53,12 +53,9 @@ export default function Sidebar () {
 		}
 
 	return (
-		<nav style={{width: "10vh"}}>
+		<nav>
 			<div className={`sidebar ${showNavbar && 'active'}`}>
-
-				{/* <div className='title'>
-					<span>Smart Automation System</span>
-				</div> */}
+				
 				<div className='elements'>
 					<NavLink className='page' to="/">
 						<img src="./images/sidebar/home.png" alt="Home"/>
@@ -79,6 +76,10 @@ export default function Sidebar () {
 							</NavLink>
 						)}
 					):null}
+					<NavLink className='page' to="/room">
+						<img src="./images/sidebar/room.png" alt="Room"/>
+						<span className='caption'>Room</span>
+					</NavLink>
 				</div>
 
 				<div className='toggle'>

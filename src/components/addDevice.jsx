@@ -47,7 +47,6 @@ export default function AddDevice() {
 			return;
 			}
 		setOpen(false);
-		// window.location.reload(false);
 		};
 
 	const handleClick = () => {
@@ -177,11 +176,7 @@ export default function AddDevice() {
 					</Form.Select>
 				</Form.Group>
 
-				<Button 
-					value={btnText}
-					type='submit'
-					onClick={handleClick}
-					className='button'>
+				<Button value={btnText} type='submit' onClick={handleClick} className='button'>
 					Submit
 				</Button>
 			</Form>

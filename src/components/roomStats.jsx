@@ -27,7 +27,7 @@ export default function RoomStats() {
 		return (
 			<>
 				<div style={{display:'flex', flexDirection:"row"}}>
-					<span className='homeSubtitle'>Active Lights</span>
+					<span className='homeSubtitle'>Active Devices</span>
 					<div className="page">
 						<div className="select-dropdown">
 							<select value={selectedRoom} onChange={e => setSelectedRoom(e.target.value)}>

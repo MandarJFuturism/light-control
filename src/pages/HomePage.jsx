@@ -8,7 +8,7 @@ import RoomStats from '../components/roomStats';
 import AddDevice from '../components/addDevice';
 import Chart from '../components/dataChart';
 import {BarChart, Bar, XAxis, YAxis, Tooltip, Legend} from "recharts";
-import { Flex } from 'rebass';
+
 const data = [
 	{
 		month: "January",
@@ -133,8 +133,9 @@ export default function Home() {
 					</div>
 
 					<div>
-						<span className='header'>Add Devices</span>
+						<span className='header'>Add new Devices</span>
 						<AddDevice/>
+
 					</div>
 				</div>
 
