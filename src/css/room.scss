@@ -4,6 +4,8 @@ $color_3: #ffb833;
 $color_4: #424242;
 $color_5: #716da2;
 $color_6: #252525;
+$activeColor: #27ae60;
+$darkenColor: darken($activeColor, 20%);
 
 @keyframes slide-in-top
 	{

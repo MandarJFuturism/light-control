@@ -13,6 +13,7 @@ import Devices from './pages/Devices';
 import Room from './pages/room';
 import AddRoom from './components/addRoom';
 import Sidebar from './components/Sidebar';
+import BlankPage from './components/blankPage';
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 						<Route exact path="/editDevice" element={<Devices/>}/>
 						<Route exact path="/room" element={<Room/>}/>
 						<Route exact path="/addRoom" element={<AddRoom/>}/>
+						<Route exact path="/blank" element={<BlankPage/>}/>
 					</Routes>
 				</Router>
 				<div className='fab'><FAB/></div>

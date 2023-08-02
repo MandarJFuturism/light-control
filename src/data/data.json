@@ -61,7 +61,7 @@
       "deviceId": "vrv34",
       "device": "Lights 2",
       "deviceType": "Lights",
-      "status": false,
+      "status": true,
       "room": "Conference Room"
     },
     {
