@@ -5,9 +5,10 @@ import {TbAirConditioning, TbBulbFilled} from 'react-icons/tb'
 import {FaFan} from 'react-icons/fa'
 import '../css/room.scss'
 import { Switch } from "antd";
+import { motion } from "framer-motion";
+import Checkbox from "../utilities/checkbox";
 
 export default function Room() {
-
 	const [data, setData] = useState([])
 	const [status, setStatus] = useState(false)
 	const [s1, sets1] = useState(0)
@@ -357,39 +358,37 @@ export default function Room() {
 						}
 
 				return(
-					<div className='lightContainer' key={index}>
+					<div className="boxWrapper" key={index}>
 						<Box className='switchBox' bgcolor={item.s1 || item.s2 || item.s3 || item.s4 === 1 ? '#ffb833' : '#424242'}>
-							<Box className="switchSubBox">
-								<TbBulbFilled className="icon"/>
-								<span className="subtitle">{item.name}</span>
-								<Switch
-									style={{
-										margin:'inherit',
-										width: '60px',
-										height: '24px',
-										backgroundColor: '#252525',
-										float:'right'
-									}}
-									className="toggleSwitch"
-									checkedChildren='ON'
-									unCheckedChildren='OFF'
-									checked={item.s1 || item.s2 || item.s3 || item.s4 === 1 ? true : false}
-									onChange={onToggle}
-									/>
-								</Box>
-								<div className="switchSubBox">
-									<div>
-										<input type="checkbox" onClick={valuseS1} checked={item.s1 === 1 ? true : false} />
-										<input type="checkbox" onClick={valuseS2} checked={item.s2 === 1 ? true : false} />
-										<input type="checkbox" onClick={valuseS3} checked={item.s3 === 1 ? true : false} />
-										<input type="checkbox" onClick={valuseS4} checked={item.s4 === 1 ? true : false} />
-									</div>
-									<i className="subButton" onClick={valuseS1}>{item.s1}</i>
-									<i className="subButton" onClick={valuseS2}>{item.s2}</i>
-									<i className="subButton" onClick={valuseS3}>{item.s3}</i>
-									<i className="subButton" onClick={valuseS4}>{item.s4}</i>
-								</div>
+							<TbBulbFilled className="icon" />
+							<span className="subtitle">{item.name}</span>
+							<Switch
+								style={{
+									margin:'inherit',
+									width: '60px',
+									height: '24px',
+									backgroundColor: '#252525',
+									float:'right'
+								}}
+								className="toggleSwitch"
+								checkedChildren='ON'
+								unCheckedChildren='OFF'
+								checked={item.s1 || item.s2 || item.s3 || item.s4 === 1 ? true : false}
+								onChange={onToggle}
+								/>
 							</Box>
+							{ item.s1 || item.s2 || item.s3 || item.s4 === 1 ?
+								<motion.div className="switchSubBox" 
+									animate={{ y: 20 }}
+									transition={{ y:{duration: 0.2}, delay: 0 }}>
+									<div className="subSwitches">
+										<Checkbox type="checkbox" onChange={valuseS1} checked={item.s1 === 1 ? true : false}/>
+										<Checkbox type="checkbox" onChange={valuseS2} checked={item.s2 === 1 ? true : false}/>
+										<Checkbox type="checkbox" onChange={valuseS3} checked={item.s3 === 1 ? true : false}/>
+										<Checkbox type="checkbox" onChange={valuseS4} checked={item.s4 === 1 ? true : false}/>
+									</div>
+								</motion.div>
+							: null}
 						</div>
 					)
 				}

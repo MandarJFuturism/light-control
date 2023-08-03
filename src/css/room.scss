@@ -4,6 +4,7 @@ $color_3: #ffb833;
 $color_4: #424242;
 $color_5: #716da2;
 $color_6: #252525;
+$subBoxColor: #252525;
 $activeColor: #27ae60;
 $darkenColor: darken($activeColor, 20%);
 
@@ -50,10 +51,11 @@ $darkenColor: darken($activeColor, 20%);
 	vertical-align: top;
 	}
 
-.lightContainer
+.boxWrapper
 	{
 	margin-top: 10px;
 	display: flex;
+	flex-direction: column;
 	float: left;
 	}
 
@@ -65,26 +67,31 @@ $darkenColor: darken($activeColor, 20%);
 	max-height: 500px;
 	color: $color_6;
 	padding: 20px;
-	margin: 10px;
+	margin: 10px 10px -10px 10px;
 	font-size: 25px;
 	border: 1px solid $color_4;
 	border-radius: 35px;
+	z-index: 1;
 	}
 
-.switchSubBox {
-	display: block;
-	height: 50px;
-	color: $color_6;
-	padding: 20px 20px;
+.switchSubBox{
+	width: inherit;
+	padding: 60px 25px 10px 25px;
+	background-color: $subBoxColor;
+	margin: -70px 10px 10px 10px;
+	align-items: center;
 	font-size: 25px;
-	padding: 5px;
-	// border-bottom: 1px solid $color_4;
-	border-radius: 35px;
-	button{
-		padding: 5px 5px;
-		}
+	border: 1px solid $color_4;
+	border-radius: 35px 35px 35px 35px;
 	}
 
+.subSwitches{
+	margin: auto;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	background-color: #252525;
+	}
 .switchStyle
 	{
 	margin-top: 11.5px;
@@ -136,7 +143,5 @@ $darkenColor: darken($activeColor, 20%);
 		}
 	}
 
-.subButton{
-	background-color: $color_4;
-	color: $color_1;
-	}
+
+
